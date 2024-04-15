@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  * This class represents a DTO of an invoice
- * getters, setters, constructors generated with lombok
+ * Getters, setters, constructors generated with lombok
  *
  * @author Kat
  */
@@ -26,7 +26,7 @@ public class InvoiceDTO {
      * Connects to json property sent from client via {@code @JsonProperty("_id)}
      */
     @JsonProperty("_id")
-    private Long id;
+    private long id;
 
     /**
      * Represents the invoice number
