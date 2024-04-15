@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 /**
- * This class represents a DTO of an invoice
+ * This class represents the DTO of an invoice
  * Getters, setters, constructors generated with lombok
  *
  * @author Kat
@@ -57,7 +57,7 @@ public class InvoiceDTO {
     private Date dueDate;
 
     /**
-     * Represents the name of an invoice
+     * Represents the name of a product
      * Entered by user
      * Cannot be null
      */
@@ -83,7 +83,7 @@ public class InvoiceDTO {
     private int vat;
 
     /**
-     * Represents a note to an invoice
+     * Represents a note for an invoice
      * Entered by user
      * Can be null
      */

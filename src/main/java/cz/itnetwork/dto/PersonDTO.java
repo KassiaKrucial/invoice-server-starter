@@ -28,7 +28,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * This class represents a DTO of a person (or company), that can be later designated as buyer or seller for an invoice
+ * This class represents the DTO of a person (or company), that can be later designated as buyer or seller for an invoice
  * Getters, setters, constructors generated with lombok
  *
  * @author Itnetwork.cz
