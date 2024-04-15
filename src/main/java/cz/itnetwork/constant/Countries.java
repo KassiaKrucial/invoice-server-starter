@@ -22,6 +22,12 @@
  */
 package cz.itnetwork.constant;
 
+/**
+ * This Enum holds the options of countries a person/company may reside in
+ *
+ * @author ITnetwork.cz
+ * @author The author of Javadoc is Kat
+ */
 public enum Countries {
     CZECHIA, SLOVAKIA
 }
