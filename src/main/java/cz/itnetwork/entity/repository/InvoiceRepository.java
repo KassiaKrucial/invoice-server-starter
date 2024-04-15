@@ -24,12 +24,21 @@ public interface InvoiceRepository extends
     @Query(value = "SELECT invoice.* FROM invoice invoice INNER JOIN person person ON invoice.buyer_id = person.id WHERE invoice.buyer_id = :buyerId", nativeQuery = true)
     List<InvoiceEntity> findByBuyer(@Param("buyerId") long buyerId);
 
-    @Query(value = "SELECT NEW cz.itnetwork.dto.InvoicesStatisticsDTO(SUM(letosek.price), SUM(vsechno.price), COUNT(vsechno.id)) FROM invoice vsechno LEFT JOIN invoice letosek ON vsechno.id = letosek.id AND YEAR(letosek.issued) = YEAR(CURRENT_DATE)")
+    @Query(value = """
+        SELECT NEW cz.itnetwork.dto.InvoicesStatisticsDTO(
+            SUM(currentYearInvoices.price), 
+            SUM(allYearsInvoices.price), 
+            COUNT(allYearsInvoices.id)) 
+        FROM invoice allYearsInvoices 
+        LEFT JOIN invoice currentYearInvoices 
+        ON allYearsInvoices.id = currentYearInvoices.id 
+        AND YEAR(currentYearInvoices.issued) = YEAR(CURRENT_DATE)
+        """)
     InvoicesStatisticsDTO getInvoicesStatistics();
 
     @Query(value = """
         SELECT NEW cz.itnetwork.dto.PersonsStatisticsDTO(
-        person.id, person.name, SUM(invoice.price)) 
+            person.id, person.name, SUM(invoice.price)) 
         FROM person person
         INNER JOIN invoice invoice ON person.id = invoice.seller.id
         GROUP BY person.id
