@@ -10,48 +10,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/invoices")
 public class InvoiceController {
 
     @Autowired
     private InvoiceService invoiceService;
 
-    @PostMapping("/invoices")
+    @PostMapping("/")
     public InvoiceDTO addInvoice(@RequestBody InvoiceDTO invoiceDTO) {
         return invoiceService.addInvoice(invoiceDTO);
     }
 
-    @GetMapping("/invoices")
+    @GetMapping("/")
     public List<InvoiceDTO> getAllInvoices(InvoiceFilter invoiceFilter) {
         return invoiceService.getAllInvoices(invoiceFilter);
     }
 
-    @GetMapping("/invoices/{id}")
+    @GetMapping("/{id}")
     public InvoiceDTO getInvoiceById(@PathVariable Long id) {
         return invoiceService.getInvoiceById(id);
     }
 
-    @PutMapping("/invoices/{id}")
+    @PutMapping("/{id}")
     public InvoiceDTO updateInvoice(@PathVariable Long id,
                                     @RequestBody InvoiceDTO invoiceDTO) {
         return invoiceService.updateInvoice(id, invoiceDTO);
     }
 
-    @DeleteMapping("/invoices/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity removeInvoice(@PathVariable Long id) {
         return invoiceService.removeInvoice(id);
     }
 
-    @GetMapping("/identification/{identificationNumber}/sales")
-    public List<InvoiceDTO> getSales(
-            @PathVariable String identificationNumber) {
-        return invoiceService.getSales(identificationNumber);
-    }
-
-    @GetMapping("/identification/{identificationNumber}/purchases")
-    public List<InvoiceDTO> getPurchases(
-            @PathVariable String identificationNumber) {
-        return invoiceService.getPurchases(identificationNumber);
-    }
-    
 }
