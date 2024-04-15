@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * This class represents a DTO of statistics for invoices
+ * This class represents the DTO of statistics for invoices
  * Getters, setters, constructors generated with lombok
  *
  * @author Kat

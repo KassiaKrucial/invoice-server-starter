@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * This class represents a DTO for statistics of people/companies saved in the database (includes hidden people/companies)
+ * This class represents the DTO for statistics of people/companies saved in the database (includes hidden people/companies)
  * Getters, setters, constructors generated with lombok
  *
  * @author Kat
