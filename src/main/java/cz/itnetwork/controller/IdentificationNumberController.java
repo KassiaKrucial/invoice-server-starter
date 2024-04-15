@@ -12,6 +12,8 @@ import java.util.List;
 
 /**
  * This rest controller catches http requests to url addresses starting on `/api/identification`
+ *
+ * @author Kat
  */
 @RestController
 @RequestMapping("/api/identification")
