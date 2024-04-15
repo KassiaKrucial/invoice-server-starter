@@ -7,14 +7,16 @@ import org.mapstruct.Mapper;
 /**
  * This class represents a mapper between InvoiceDTO and InvoiceEntity
  * Component model is `spring`
+ *
+ * @author Kat
  */
 @Mapper(componentModel = "spring")
 public interface InvoiceMapper {
 
     /**
      * Converts InvoiceEntity to InvoiceDTO
-     * @param entity the entity representing invoice
-     * @return the DTO representing invoice
+     * @param entity the entity representing an invoice
+     * @return the DTO representing an invoice
      */
     InvoiceDTO toDTO(InvoiceEntity entity);
 

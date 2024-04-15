@@ -25,11 +25,27 @@ import cz.itnetwork.dto.PersonDTO;
 import cz.itnetwork.entity.PersonEntity;
 import org.mapstruct.Mapper;
 
-
+/**
+ * This class represents a mapper between PersonDTO and PersonEntity
+ * Component model is `spring`
+ *
+ * @author ITnetwork.cz
+ * @author The author of Javadoc is Kat
+ */
 @Mapper(componentModel = "spring")
 public interface PersonMapper {
 
+    /**
+     * Converts PersonDTO to PersonEntity
+     * @param source the dto representing a person/company
+     * @return the entity representing a person/company
+     */
     PersonEntity toEntity(PersonDTO source);
 
+    /**
+     * Converts PersonEntity to PersonDTO
+     * @param source the entity representing a person/company
+     * @return the DTO representing a person/company
+     */
     PersonDTO toDTO(PersonEntity source);
 }
