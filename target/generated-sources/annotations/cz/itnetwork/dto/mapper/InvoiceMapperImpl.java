@@ -23,7 +23,9 @@ public class InvoiceMapperImpl implements InvoiceMapper {
 
         InvoiceDTO invoiceDTO = new InvoiceDTO();
 
-        invoiceDTO.setId( entity.getId() );
+        if ( entity.getId() != null ) {
+            invoiceDTO.setId( entity.getId() );
+        }
         invoiceDTO.setInvoiceNumber( entity.getInvoiceNumber() );
         invoiceDTO.setIssued( entity.getIssued() );
         invoiceDTO.setDueDate( entity.getDueDate() );
