@@ -38,7 +38,7 @@ public class InvoiceController {
      * Shows a list of filtered or all invoices saved in the database
      * Catches http method GET to url ending with `/`
      * @param invoiceFilter contains selected parameters that the list can be filtered by {@link InvoiceFilter}
-     * @return un/filtered list of {@link InvoiceDTO}
+     * @return un/filtered list of invoices as {@link InvoiceDTO}
      */
     @GetMapping("/")
     public List<InvoiceDTO> getAllInvoices(InvoiceFilter invoiceFilter) {
