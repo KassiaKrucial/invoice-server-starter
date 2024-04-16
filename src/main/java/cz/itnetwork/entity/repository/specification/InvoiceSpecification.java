@@ -8,15 +8,27 @@ import cz.itnetwork.entity.repository.filter.InvoiceFilter;
 import jakarta.persistence.criteria.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class contains queries for {@link InvoiceFilter} to filter invoices via java and not sql
+ */
 @RequiredArgsConstructor
 public class InvoiceSpecification implements Specification<InvoiceEntity> {
 
+    /**
+     * Represents an instance of {@link InvoiceFilter}
+     */
     private final InvoiceFilter filter;
 
+    /**
+     * Filters invoices by: product, minPrice, maxPrice, buyerId, sellerId
+     * @param root the class {@link InvoiceEntity} containing properties to filter
+     * @param query defines query structure
+     * @param criteriaBuilder creates typed queries
+     * @return query for filtering invoices
+     */
     @Override
     public Predicate toPredicate(Root<InvoiceEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicates = new ArrayList<>();
