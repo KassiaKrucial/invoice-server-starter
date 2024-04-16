@@ -6,8 +6,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * This configuration class adds CORS mapping
- * Allows access to resources from external third parties
+ * <p>This configuration class adds CORS mapping</p>
+ * <p>Allows access to resources from external third parties</p>
  *
  * @author ITnetwork
  * @author The author of Javadoc for this class is Kat
@@ -17,10 +17,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfiguration implements WebMvcConfigurer {
 
     /**
-     * Defines global CORS configurations:
-     *      adds mapping to `/**`
-     *      allows http methods: HEAD, GET, POST, PUT, DELETE, OPTIONS
-     *      all credentials are true
+     * <p>Defines global CORS configurations:</p>
+     * <p>     adds mapping to `/**`</p>
+     * <p>     allows http methods: HEAD, GET, POST, PUT, DELETE, OPTIONS</p>
+     * <p>     all credentials are true</p>
      * @param registry
      */
     @Override

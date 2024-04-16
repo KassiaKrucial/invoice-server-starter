@@ -3,8 +3,8 @@ package cz.itnetwork.entity.repository.filter;
 import lombok.Data;
 
 /**
- * This class defines filtering parameters of invoices
- * Getters, setters, constructor generated with lombok
+ * <p>This class defines filtering parameters of invoices</p>
+ * <p>Getters, setters, constructor generated with lombok</p>
  *
  * @author Kat
  */

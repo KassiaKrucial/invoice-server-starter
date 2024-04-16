@@ -26,8 +26,8 @@ import cz.itnetwork.entity.PersonEntity;
 import org.mapstruct.Mapper;
 
 /**
- * This class represents a mapper between {@link PersonDTO} and {@link PersonEntity}
- * Component model is `spring`
+ * <p>This class represents a mapper between {@link PersonDTO} and {@link PersonEntity}</p>
+ * <p>Component model is `spring`</p>
  *
  * @author ITnetwork.cz
  * @author The author of Javadoc is Kat

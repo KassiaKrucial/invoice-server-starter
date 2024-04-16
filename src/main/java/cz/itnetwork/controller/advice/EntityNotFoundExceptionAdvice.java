@@ -17,8 +17,8 @@ import org.webjars.NotFoundException;
 public class EntityNotFoundExceptionAdvice {
 
     /**
-     * Handles NotFoundException and EntityNotFoundException
-     * returns http response status 404 - not found
+     * <p>Handles NotFoundException and EntityNotFoundException</p>
+     * <p>Returns http response status 404 - not found</p>
      */
     @ExceptionHandler({NotFoundException.class, EntityNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)

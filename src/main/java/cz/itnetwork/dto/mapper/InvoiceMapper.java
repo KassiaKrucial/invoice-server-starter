@@ -5,8 +5,8 @@ import cz.itnetwork.entity.InvoiceEntity;
 import org.mapstruct.Mapper;
 
 /**
- * This class represents a mapper between {@link InvoiceDTO} and {@link InvoiceEntity}
- * Component model is `spring`
+ * <p>This class represents a mapper between {@link InvoiceDTO} and {@link InvoiceEntity}</p>
+ * <p>Component model is `spring`</p>
  *
  * @author Kat
  */

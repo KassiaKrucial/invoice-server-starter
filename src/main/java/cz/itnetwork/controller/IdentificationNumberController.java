@@ -25,8 +25,8 @@ public class IdentificationNumberController {
     private InvoiceService invoiceService;
 
     /**
-     * Shows a person's/company's sales
-     * Catches http GET method to url ending with `/{identificationNumber}/sales`
+     * <p>Shows a person's/company's sales</p>
+     * <p>Catches http GET method to url ending with `/{identificationNumber}/sales`</p>
      * @param identificationNumber the identification number of a person/company saved in the database
      * @return list of {@link InvoiceDTO} corresponding to the sales of a person/company
      */
@@ -37,8 +37,8 @@ public class IdentificationNumberController {
     }
 
     /**
-     * Shows a person's/company's purchases
-     * Catches http GET method to url ending with `/{identificationNumber}/purchases`
+     * <p>Shows a person's/company's purchases</p>
+     * <p>Catches http GET method to url ending with `/{identificationNumber}/purchases`</p>
      * @param identificationNumber the identification number of a person/company saved in the database
      * @return list of {@link InvoiceDTO} corresponding to the purchases of a person/company
      */

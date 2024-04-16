@@ -25,8 +25,8 @@ public class StatisticsController {
     private StatisticsService statisticsService;
 
     /**
-     * Shows statistics for invoices
-     * Catches http GET method to url ending with `/invoices/statistics`
+     * <p>Shows statistics for invoices</p>
+     * <p>Catches http GET method to url ending with `/invoices/statistics`</p>
      * @return data filtered at database level as {@link InvoicesStatisticsDTO}
      */
     @GetMapping("/invoices/statistics")
@@ -35,8 +35,8 @@ public class StatisticsController {
     }
 
     /**
-     * Shows statistics of individual people/companies
-     * Catches http GET method to url ending with `/persons/statistics`
+     * <p>Shows statistics of individual people/companies</p>
+     * <p>Catches http GET method to url ending with `/persons/statistics`</p>
      * @return data filtered at the database level as list of {@link PersonsStatisticsDTO}
      */
     @GetMapping("/persons/statistics")
