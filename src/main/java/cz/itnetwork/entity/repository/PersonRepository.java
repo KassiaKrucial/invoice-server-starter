@@ -23,17 +23,32 @@ package cz.itnetwork.entity.repository;
 
 import cz.itnetwork.entity.PersonEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
 import java.util.List;
 
+/**
+ * This interface contains CRUD operations for invoices
+ */
 public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
 
+    /**
+     * Finds people/companies by parameter hidden
+     * @param hidden If true, a person/company is viewed as deleted
+     * @return List of filtered people/companies
+     */
     List<PersonEntity> findByHidden(boolean hidden);
 
+    /**
+     * Finds person/company by identification number {@link PersonEntity}
+     * @param identificationNumber Identification number of person/company
+     * @return List of filtered people/companies
+     */
     List<PersonEntity> findByIdentificationNumber(String identificationNumber);
 
+    /**
+     * Finds out, if a person/company exists in the database
+     * @param IdentificationNumber Indentification number of person/company
+     * @return The existence of person/company
+     */
     Boolean existsByIdentificationNumber(String IdentificationNumber);
 
 }

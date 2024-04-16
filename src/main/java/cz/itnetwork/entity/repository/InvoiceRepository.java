@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 /**
- * This interface CRUD operations and written sql queries for invoices
+ * This interface contains CRUD operations and written sql queries for invoices
  *
  * @author Kat
  */
