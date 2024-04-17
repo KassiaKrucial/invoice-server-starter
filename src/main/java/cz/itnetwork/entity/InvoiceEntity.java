@@ -72,7 +72,7 @@ public class InvoiceEntity {
 
     /**
      * <p>Represents the buyer of a product</p>
-     * <p>Has a ManyToOne association to invoices (one buyer {@link PersonEntity} can buy many products)</p>
+     * <p>Has a ManyToOne association to invoices (many products can buy one buyer {@link PersonEntity})</p>
      * <p>Cannot be null</p>
      */
     @ManyToOne
@@ -81,7 +81,7 @@ public class InvoiceEntity {
 
     /**
      * <p>Represents the seller of a product</p>
-     * <p>Has a ManyToOne association to invoices (one seller {@link PersonEntity} can sell many products)</p>
+     * <p>Has a ManyToOne association to invoices (many products can sell one seller {@link PersonEntity})</p>
      * <p>Cannot by null</p>
      */
     @ManyToOne

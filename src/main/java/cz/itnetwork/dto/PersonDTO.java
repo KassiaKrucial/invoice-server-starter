@@ -96,13 +96,13 @@ public class PersonDTO {
     private String mail;
 
     /**
-     * <p>Represents the street of the headquarters of a person/company</p>
+     * <p>Represents the street, that the headquarters of a person/company is located on</p>
      * <p>Entered by user</p>
      */
     private String street;
 
     /**
-     * <p>Represents the zip code of the headquarters of a person/company</p>
+     * <p>Represents the zip code of a city, where the headquarters of a person/company is located</p>
      * <p>Entered by user</p>
      */
     private String zip;
@@ -115,7 +115,7 @@ public class PersonDTO {
 
     /**
      * <p>Represents the country, where the headquarters of a person/company is located</p>
-     * <p>Must be chosen from enum {@link Countries}</p>
+     * <p>Chosen from enum {@link Countries}</p>
      * <p>Entered by user</p>
      */
     private Countries country;
