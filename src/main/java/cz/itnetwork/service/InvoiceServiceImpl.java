@@ -15,25 +15,46 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is an implementation of {@link InvoiceService}, provides CRUD operations for working with invoices
+ *
+ * @author Kat
+ */
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
 
+    /**
+     * Autowires the necessary bean of {@link InvoiceRepository}
+     */
     @Autowired
     private InvoiceRepository invoiceRepository;
 
+    /**
+     * Autowires the necessary bean of {@link InvoiceMapper}
+     */
     @Autowired
     private InvoiceMapper invoiceMapper;
 
+    /**
+     * Autowires the necessary bean of {@link PersonRepository}
+     */
     @Autowired
     private PersonRepository personRepository;
 
+    /**
+     * Autowires the necessary bean oof {@link PersonService}
+     */
     @Autowired
     private PersonService personService;
 
+    /**
+     * Creates an invoice and saves it into the database
+     * @param invoiceDTO Data of the new invoice sent by user
+     * @return The newly created invoice with database generated id
+     */
     @Override
     public InvoiceDTO addInvoice(InvoiceDTO invoiceDTO) {
         PersonEntity seller = personService.fetchPersonById(invoiceDTO.getSeller().getId());
@@ -47,11 +68,17 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoiceMapper.toDTO(savedInvoice);
     }
 
+    /**
+     * Finds all/filtered invoices in the database
+     * @param invoiceFilter Can be filtered by data sent by user as {@link InvoiceFilter}
+     * @return List of all/filtered invoices
+     */
     @Override
     public List<InvoiceDTO> getAllInvoices(InvoiceFilter invoiceFilter) {
         InvoiceSpecification invoiceSpecification = new InvoiceSpecification(invoiceFilter);
         Page<InvoiceEntity> allInvoiceEntities =
-                invoiceRepository.findAll(invoiceSpecification, PageRequest.of(0, invoiceFilter.getLimit()));
+                invoiceRepository.findAll(invoiceSpecification,
+                        PageRequest.of(0, invoiceFilter.getLimit()));
 
         List<InvoiceDTO> allInvoiceDTOs = new ArrayList<>();
         for (InvoiceEntity entity: allInvoiceEntities) {
@@ -60,13 +87,22 @@ public class InvoiceServiceImpl implements InvoiceService {
         return allInvoiceDTOs;
     }
 
+    /**
+     * Finds an invoice in the database by its id
+     * @param id Sent by user in url parameter
+     * @return Found invoice or EntityNotFoundException
+     */
     @Override
     public InvoiceDTO getInvoiceById(long id) {
-
         return invoiceMapper.toDTO(fetchInvoiceById(id));
-
     }
 
+    /**
+     * Updates an invoice existing in the database
+     * @param id Sent by user in url parameter
+     * @param invoiceDTO Data sent by user for changing the invoice
+     * @return The newly updated invoice or EntityNotFoundException
+     */
     @Override
     public InvoiceDTO updateInvoice(long id, InvoiceDTO invoiceDTO) {
         InvoiceEntity enteredEntity = invoiceMapper.toEntity(invoiceDTO);
@@ -86,32 +122,54 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoiceMapper.toDTO(savedEntity);
     }
 
+    /**
+     * Deletes an invoice by id from the database
+     * @param id Sent by user in url parameter
+     * @return http status 204 - no content or EntityNotFoundException
+     */
     @Override
     public ResponseEntity removeInvoice(long id) {
         invoiceRepository.delete(fetchInvoiceById(id));
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
+    /**
+     * Finds invoices in the database for products sold by specific person/company
+     * @param identificationNumber A http parameter by which to filter invoices
+     * Second method parameter must be set as TRUE to get sales
+     * @return List of found invoices or EntityNotFoundException
+     */
     @Override
     public List<InvoiceDTO> getSales(String identificationNumber) {
         return getSalesOrPurchases(identificationNumber, true);
     }
 
+    /**
+     * Finds invoices in the database for products bought by specific person/company
+     * @param identificationNumber A http parameter by which to filter invoices
+     * Second method parameter must be set as FALSE to get purchases
+     * @return List of found invoices or EntityNotFoundException
+     */
     @Override
     public List<InvoiceDTO> getPurchases(String identificationNumber) {
         return getSalesOrPurchases(identificationNumber, false);
     }
 
+    /**
+     * Finds invoices in the database for products sold or bought by specific person/company
+     * @param personIdentificationNumber Identification number of person/company
+     * @param isSeller set as true to get sales, set as false to get purchases
+     * @return List of found invoices or EntityNotFoundException
+     */
     private List<InvoiceDTO> getSalesOrPurchases(String personIdentificationNumber, boolean isSeller) {
 
         if (!personRepository.existsByIdentificationNumber(personIdentificationNumber)) {
             throw new EntityNotFoundException();
         } else {
             List<InvoiceDTO> invoiceDTOs = new ArrayList<>();
-            List<PersonEntity> personEntity;
+            List<PersonEntity> personEntity = personRepository
+                    .findByIdentificationNumber(personIdentificationNumber);
             List<InvoiceEntity> foundInvoices = new ArrayList<>();
-
-            personEntity = personRepository.findByIdentificationNumber(personIdentificationNumber);
 
             for (int i = 0; i < personEntity.size(); i++) {
                 PersonEntity foundEntity = personEntity.get(i);
@@ -133,6 +191,11 @@ public class InvoiceServiceImpl implements InvoiceService {
         }
     }
 
+    /**
+     * Finds invoice by id in the database or throws EntityNotFoundException
+     * @param id Id of an invoice to find
+     * @return Found invoice or EntityNotFoundException
+     */
     private InvoiceEntity fetchInvoiceById(long id) {
         return invoiceRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException());
