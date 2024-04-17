@@ -197,7 +197,7 @@ public class InvoiceServiceImpl implements InvoiceService {
      */
     private InvoiceEntity fetchInvoiceById(long id) {
         return invoiceRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException());
+                .orElseThrow(EntityNotFoundException::new);
     }
 
 }
