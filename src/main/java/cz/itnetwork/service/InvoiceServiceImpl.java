@@ -171,8 +171,7 @@ public class InvoiceServiceImpl implements InvoiceService {
                     .findByIdentificationNumber(personIdentificationNumber);
             List<InvoiceEntity> foundInvoices = new ArrayList<>();
 
-            for (int i = 0; i < personEntity.size(); i++) {
-                PersonEntity foundEntity = personEntity.get(i);
+            for (PersonEntity foundEntity : personEntity) {
                 if (isSeller) {
                     foundInvoices.addAll(invoiceRepository.findBySeller(foundEntity.getId()));
                 } else {
