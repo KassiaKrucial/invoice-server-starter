@@ -5,6 +5,9 @@ import cz.itnetwork.entity.PersonEntity;
 
 import java.util.List;
 
+/**
+ * Kat is not responsible for this Javadoc :)
+ */
 public interface PersonService {
 
     /**

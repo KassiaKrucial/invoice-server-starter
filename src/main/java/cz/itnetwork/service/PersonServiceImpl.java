@@ -33,6 +33,9 @@ import org.webjars.NotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Kat is not responsible for thi Javadoc :)
+ */
 @Service
 public class PersonServiceImpl implements PersonService {
 
