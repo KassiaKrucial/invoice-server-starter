@@ -2,7 +2,6 @@ package cz.itnetwork.service;
 
 import cz.itnetwork.dto.InvoicesStatisticsDTO;
 import cz.itnetwork.dto.PersonsStatisticsDTO;
-
 import java.util.List;
 
 /**
